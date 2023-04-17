@@ -15,6 +15,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import java.awt.Frame;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal {
 
@@ -53,11 +55,12 @@ public class TelaPrincipal {
 		frmSistemaDeVeterinria.setBounds(100, 100, 450, 300);
 		frmSistemaDeVeterinria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSistemaDeVeterinria.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frmSistemaDeVeterinria.getContentPane().setLayout(new BorderLayout(0, 0));
+		frmSistemaDeVeterinria.getContentPane().setLayout(null);
 		
 		JDesktopPane desktop = new JDesktopPane();
+		desktop.setBounds(0, 0, 1350, 658);
 		desktop.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		frmSistemaDeVeterinria.getContentPane().add(desktop, BorderLayout.CENTER);
+		frmSistemaDeVeterinria.getContentPane().add(desktop);
 		
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(0, 0, 434, 22);
@@ -67,9 +70,17 @@ public class TelaPrincipal {
 		barraMenu.add(menuCadastrar);
 		
 		JMenuItem menuUsuario = new JMenuItem("Usu\u00E1rio");
+		menuUsuario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.ALT_DOWN_MASK));
 		menuCadastrar.add(menuUsuario);
 		
 		JMenuItem menuVeterinario = new JMenuItem("Veterin\u00E1rio");
+		menuVeterinario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCrudVeterinario tela = new TelaCrudVeterinario();
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
 		menuVeterinario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.ALT_DOWN_MASK));
 		menuCadastrar.add(menuVeterinario);
 		
