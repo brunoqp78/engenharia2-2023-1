@@ -70,6 +70,13 @@ public class TelaPrincipal {
 		barraMenu.add(menuCadastrar);
 		
 		JMenuItem menuUsuario = new JMenuItem("Usu\u00E1rio");
+		menuUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCrudUsuario tela = new TelaCrudUsuario();
+				tela.setVisible(true);
+				desktop.add(tela);
+			}
+		});
 		menuUsuario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.ALT_DOWN_MASK));
 		menuCadastrar.add(menuUsuario);
 		
