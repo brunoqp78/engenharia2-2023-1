@@ -1,6 +1,9 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Time;
+import java.time.Instant;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "veterinario")
-public class Veterinary implements Serializable{
+public class Veterinario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -19,12 +22,13 @@ public class Veterinary implements Serializable{
 	private String nome;
 	private String especialidade;
 	
-	public Veterinary() {
+	public Veterinario() {
 		super();
 	}
 	
-	public Veterinary(Integer idVeterinario, String nome, String especialidade) {
+	public Veterinario(Integer idVeterinario, String nome, String especialidade) {
 		super();
+		
 		this.idVeterinario = idVeterinario;
 		this.nome = nome;
 		this.especialidade = especialidade;

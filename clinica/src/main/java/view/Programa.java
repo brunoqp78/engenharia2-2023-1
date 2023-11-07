@@ -1,27 +1,31 @@
 package view;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import model.Veterinary;
+import control.VeterinarioControle;
+import model.Veterinario;
 
 public class Programa {
 
 	public static void main(String[] args) {
-		Veterinary v = new Veterinary(null, "Amanda", "Pequenos animais");
+		Veterinario v = new Veterinario(null, "Ramiro", "Pequenos animais");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto");
-		EntityManager em = emf.createEntityManager();
+		VeterinarioControle controle = new VeterinarioControle();
 		
-		em.getTransaction().begin();
+		controle.inserir(v);
 		
-		em.persist(v);
 		
-		em.getTransaction().commit();
 		
-		em.close();
-		emf.close();
+		List<Veterinario> vets = controle.buscarTodos();
+		for (Veterinario veterinario : vets) {
+			System.out.println(veterinario.getNome());
+		}
+		
+		controle.excluir(v);
 
 	}
 
