@@ -66,7 +66,10 @@ public class VeterinarioControle {
 	}
 	
 	public Veterinario buscarPorId(Integer id) {
-		return em.find(Veterinario.class, id);
+		Veterinario v = em.find(Veterinario.class, id);
+		em.refresh(v);
+		return v;
+		
 	}
 	
 	public List<Veterinario> buscarTodos() {
